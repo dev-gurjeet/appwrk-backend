@@ -4,6 +4,8 @@ const cors = require('cors');
 const sequelize = require('./db/client');
 const Transactions = require('./db/models/transactions');
 
+require('dotenv').config(); // Add this at the top
+
 const app = express();
 
 // Enable CORS for all routes
@@ -93,7 +95,8 @@ app.post('/api/transactions', async (req, res) => {
 });
 
 // Start the server on port 8001
-const PORT = 8001;
+const PORT = process.env.PORT || 8001;
+
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 });
