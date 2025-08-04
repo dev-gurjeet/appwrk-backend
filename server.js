@@ -53,7 +53,7 @@ app.post('/api/transactions', async (req, res) => {
         if (!description || !amount || !transactionType) {
             return res.status(400).json({ error: 'All fields are required.' });
         }
-        if(amount <= 1) {
+        if(amount < 1) {
             return res.status(400).json({ error: 'Amount must be greater than 1.' });
         }
         // Find the last transaction to get the current balance
